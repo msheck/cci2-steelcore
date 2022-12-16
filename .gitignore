@@ -1,9 +1,11 @@
 *.log*
-*.cmd
+*.cmd*
 *.history
 *.key
 *.shm
+*.tstamp
 */reports_*
 */outputs_*
 *.simvision*
+synthesis/fv
 INCA_libs
