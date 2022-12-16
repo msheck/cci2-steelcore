@@ -1,0 +1,9 @@
+*.log*
+*.cmd
+*.history
+*.key
+*.shm
+*/reports_*
+*/outputs_*
+*.simvision*
+INCA_libs
