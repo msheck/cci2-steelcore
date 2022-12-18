@@ -49,8 +49,6 @@ set_db / .cap_table_file /pdk/xfab/XC018_61_3.1.3/cadence/xc018/LEF/xc018_m6_FE/
 
 set_db / .lp_insert_clock_gating true
 
-set_db / .timing_report_unconstrained true
-
 ## Power root attributes
 #set_db / .lp_clock_gating_prefix <string>
 #set_db / .lp_power_analysis_effort <high>
