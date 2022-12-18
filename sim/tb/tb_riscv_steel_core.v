@@ -144,8 +144,8 @@ module tb_riscv_steel_core();
   always #10 clock = !clock;
   
   reg [8*30:0] riscv_test_program = {
-    "add-01.mem"//,
-    /*"addi-01.mem",
+    "add-01.mem",
+    "addi-01.mem",
     "and-01.mem",
     "andi-01.mem",
     "auipc-01.mem",
@@ -197,12 +197,12 @@ module tb_riscv_steel_core();
     "sub-01.mem",
     "sw-align-01.mem",
     "xor-01.mem",
-    "xori-01.mem"*/
+    "xori-01.mem"
   };
   
   reg [8*35:0] riscv_test_program_goldenref = {
-    "add-01.reference.mem"//,
-    /*"addi-01.reference.mem",
+    "add-01.reference.mem",
+    "addi-01.reference.mem",
     "and-01.reference.mem",
     "andi-01.reference.mem",
     "auipc-01.reference.mem",
@@ -254,7 +254,7 @@ module tb_riscv_steel_core();
     "sub-01.reference.mem",
     "sw-align-01.reference.mem",
     "xor-01.reference.mem",
-    "xori-01.reference.mem"*/
+    "xori-01.reference.mem"
   };
   
   integer i, j, k, m, n, z;
