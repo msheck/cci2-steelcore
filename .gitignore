@@ -7,5 +7,16 @@
 */reports_*
 */outputs_*
 *.simvision*
+*.nfs*
+*.boundary_opto*
+*.default_emulate*
+*.flowkit_settings*
+*.g
+*.genus_*
+*.invs_*
+*.metrics*
+*.mmc
+*.mode
+
 synthesis/fv
 INCA_libs
