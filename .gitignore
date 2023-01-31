@@ -4,8 +4,6 @@
 *.key
 *.shm
 *.tstamp
-*/reports_*
-*/outputs_*
 *.simvision*
 *.nfs*
 *.boundary_opto*
@@ -17,6 +15,16 @@
 *.metrics*
 *.mmc
 *.mode
+*.rs.fp*
+*.ctstch
+*.rpt
+*.enc*
+*.gif
+
+*/reports_*
+*/outputs_*
+*/innovus*
+*/timingReports*
 
 synthesis/fv
 INCA_libs
