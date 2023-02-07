@@ -13,7 +13,7 @@ place_design
 
 ##Place pins in the chip sides
 
-edit_pin -side Top -layer 4 -spread_type center -spacing 3 -pin {Bus2IP_Clk {Bus2IP_RdCE[0]} {Bus2IP_RdCE[1]} {Bus2IP_RdCE[2]} {Bus2IP_RdCE[3]} {Bus2IP_RdCE[4]} {Bus2IP_RdCE[5]} {Bus2IP_RdCE[6]} {Bus2IP_RdCE[7]} {Bus2IP_RdCE[8]} {Bus2IP_RdCE[9]} {Bus2IP_RdCE[10]} {Bus2IP_RdCE[11]} {Bus2IP_RdCE[12]} {Bus2IP_RdCE[13]} {Bus2IP_RdCE[14]}}
+edit_pin -side Top -layer 4 -spread_type center -spacing 3 -pin {clock reset {boot_address[31]} {boot_address[30]} {boot_address[29]} {boot_address[28]} {boot_address[27]} {boot_address[26]} {boot_address[25]} {boot_address[24]} {boot_address[23]} {boot_address[22]} {boot_address[21]} {boot_address[20]} {boot_address[19]} {boot_address[18]} {boot_address[17]} {boot_address[16]} {boot_address[15]} {boot_address[14]} {boot_address[13]} {boot_address[12]} {boot_address[11]} {boot_address[10]} {boot_address[9]} {boot_address[8]} {boot_address[7]} {boot_address[6]} {boot_address[5]} {boot_address[4]} {boot_address[3]} {boot_address[2]} {boot_address[1]} } {boot_address[0] }
 
 edit_pin -side Left -layer 3 -spread_type center -spacing 3 -pin {{Bus2IP_Data[0]} {Bus2IP_Data[1]} {Bus2IP_Data[2]} {Bus2IP_Data[3]} {Bus2IP_Data[4]} {Bus2IP_Data[5]} {Bus2IP_Data[6]} {Bus2IP_Data[7]} Bus2IP_Reset}
 
