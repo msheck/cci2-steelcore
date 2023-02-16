@@ -7,9 +7,16 @@
 ##  -Export design netlist to verilog                       ##
 ##  -Annotate the delay of the final design                 ##
 ##############################################################
+
 ##Export design netlist
 write_netlist riscv_steel_core.v
+
 ##Annotate design delay
-extract_rc
-write_parasitics -set_load_file riscv_steel_core.cap
 write_sdf riscv_steel_core.sdf
+
+extract_rc
+
+write_parasitics -set_load_file riscv_steel_core.cap
+
+eval_legacy {saveDesign steelcore-synthesis-final}
+
