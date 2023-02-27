@@ -7,21 +7,12 @@
 ## Functionalities of this script:                          ##
 ##  -Route the design with nanoroute                        ##
 ##############################################################
-##Reroute the design
-#set_db  route_with_timing_driven 0 
-
 route_design -global
-
 route_detail
-
 route_global_detail
 
 # Optimization Post Route
 eval_legacy {setAnalysisMode -analysisType onChipVariation}
 opt_design -post_route
 
-#check_design -all
-
 report_timing
-
-#check_drc
