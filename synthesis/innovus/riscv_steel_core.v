@@ -24729,36 +24729,41 @@ endmodule
 
 module iopads(real_time, instruction_in, boot_address, reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, data_out, data_rw_address, data_write_mask, real_time_I, instruction_in_I, boot_address_I, reset_I, clock_I, interrupt_request_software_I, interrupt_request_timer_I, interrupt_request_external_I, instruction_address_O, data_out_O, data_rw_address_O, data_write_mask_O);
 
-	
-	input real_time [63:0];
-	input instruction_in [31:0];
-	input boot_address [31:0];
 	input reset;
 	input clock;
 	input interrupt_request_software;
 	input interrupt_request_timer;
 	input interrupt_request_external;
+	input real_time [63:0];
+	input instruction_in [31:0];
+	input boot_address [31:0];
+	input data_in [31:0];
+	output data_write_request;
 	output instruction_address [31:0];
 	output data_out [31:0];
 	output data_rw_address [31:0];
 	output data_write_mask [3:0];
 
-	output real_time_I [63:0];
-	output instruction_in_I [31:0];
-	output boot_address_I [31:0];
 	output reset_I;
 	output clock_I;
 	output interrupt_request_software_I;
 	output interrupt_request_timer_I;
 	output interrupt_request_external;
+	output real_time_I [63:0];
+	output instruction_in_I [31:0];
+	output boot_address_I [31:0];
+	output data_in_I [31:0];
+	input data_write_request_O;
 	input instruction_address_O [31:0];
 	input data_out_O [31:0];
 	input data_rw_address_O [31:0];
 	input data_write_mask_O [3:0];
-	
 
-	VDDIPADP PAD_vdd_E();
-	GNDOPADP PAD_vss_S();
+	ICP PAD_reset_i(.PAD(reset), .Y(reset_I));
+	ICP PAD_clock_i(.PAD(clock), .Y(clock_I));
+	ICP PAD_interrupt_request_software_i(.PAD(interrupt_request_software), .Y(interrupt_request_software_I));
+	ICP PAD_interrupt_request_timer_i(.PAD(interrupt_request_timer), .Y(interrupt_request_timer_I));
+	ICP PAD_interrupt_request_external_i(.PAD(interrupt_request_external), .Y(interrupt_request_external_I));
 	
 	ICP PAD_real_time_i_0(.PAD(real_time[0]), .Y(real_time_I[0]));
 	ICP PAD_real_time_i_1(.PAD(real_time[1]), .Y(real_time_I[1]));
@@ -24825,77 +24830,106 @@ module iopads(real_time, instruction_in, boot_address, reset, clock, interrupt_r
 	ICP PAD_real_time_i_62(.PAD(real_time[62]), .Y(real_time_I[62]));
 	ICP PAD_real_time_i_63(.PAD(real_time[63]), .Y(real_time_I[63]));
 
-	ICP PAD_instruction_in_i_0(.PAD(instruction_in[0]), .Y(real_time_I[0]));
-	ICP PAD_instruction_in_i_1(.PAD(instruction_in[1]), .Y(real_time_I[1]));
-	ICP PAD_instruction_in_i_2(.PAD(instruction_in[2]), .Y(real_time_I[2]));
-	ICP PAD_instruction_in_i_3(.PAD(instruction_in[3]), .Y(real_time_I[3]));
-	ICP PAD_instruction_in_i_4(.PAD(instruction_in[4]), .Y(real_time_I[4]));
-	ICP PAD_instruction_in_i_5(.PAD(instruction_in[5]), .Y(real_time_I[5]));
-	ICP PAD_instruction_in_i_6(.PAD(instruction_in[6]), .Y(real_time_I[6]));
-	ICP PAD_instruction_in_i_7(.PAD(instruction_in[7]), .Y(real_time_I[7]));
-	ICP PAD_instruction_in_i_8(.PAD(instruction_in[8]), .Y(real_time_I[8]));
-	ICP PAD_instruction_in_i_9(.PAD(instruction_in[9]), .Y(real_time_I[9]));
-	ICP PAD_instruction_in_i_10(.PAD(instruction_in[10]), .Y(real_time_I[10]));
-	ICP PAD_instruction_in_i_11(.PAD(instruction_in[11]), .Y(real_time_I[11]));
-	ICP PAD_instruction_in_i_12(.PAD(instruction_in[12]), .Y(real_time_I[12]));
-	ICP PAD_instruction_in_i_13(.PAD(instruction_in[13]), .Y(real_time_I[13]));
-	ICP PAD_instruction_in_i_14(.PAD(instruction_in[14]), .Y(real_time_I[14]));
-	ICP PAD_instruction_in_i_15(.PAD(instruction_in[15]), .Y(real_time_I[15]));
-	ICP PAD_instruction_in_i_16(.PAD(instruction_in[16]), .Y(real_time_I[16]));
-	ICP PAD_instruction_in_i_17(.PAD(instruction_in[17]), .Y(real_time_I[17]));
-	ICP PAD_instruction_in_i_18(.PAD(instruction_in[18]), .Y(real_time_I[18]));
-	ICP PAD_instruction_in_i_19(.PAD(instruction_in[19]), .Y(real_time_I[19]));
-	ICP PAD_instruction_in_i_20(.PAD(instruction_in[20]), .Y(real_time_I[20]));
-	ICP PAD_instruction_in_i_21(.PAD(instruction_in[21]), .Y(real_time_I[21]));
-	ICP PAD_instruction_in_i_22(.PAD(instruction_in[22]), .Y(real_time_I[22]));
-	ICP PAD_instruction_in_i_23(.PAD(instruction_in[23]), .Y(real_time_I[23]));
-	ICP PAD_instruction_in_i_24(.PAD(instruction_in[24]), .Y(real_time_I[24]));
-	ICP PAD_instruction_in_i_25(.PAD(instruction_in[25]), .Y(real_time_I[25]));
-	ICP PAD_instruction_in_i_26(.PAD(instruction_in[26]), .Y(real_time_I[26]));
-	ICP PAD_instruction_in_i_27(.PAD(instruction_in[27]), .Y(real_time_I[27]));
-	ICP PAD_instruction_in_i_28(.PAD(instruction_in[28]), .Y(real_time_I[28]));
-	ICP PAD_instruction_in_i_29(.PAD(instruction_in[29]), .Y(real_time_I[29]));
-	ICP PAD_instruction_in_i_30(.PAD(instruction_in[30]), .Y(real_time_I[30]));
-	ICP PAD_instruction_in_i_31(.PAD(instruction_in[31]), .Y(real_time_I[31]));
+	ICP PAD_instruction_in_i_0(.PAD(instruction_in[0]), .Y(instruction_in_I[0]));
+	ICP PAD_instruction_in_i_1(.PAD(instruction_in[1]), .Y(instruction_in_I[1]));
+	ICP PAD_instruction_in_i_2(.PAD(instruction_in[2]), .Y(instruction_in_I[2]));
+	ICP PAD_instruction_in_i_3(.PAD(instruction_in[3]), .Y(instruction_in_I[3]));
+	ICP PAD_instruction_in_i_4(.PAD(instruction_in[4]), .Y(instruction_in_I[4]));
+	ICP PAD_instruction_in_i_5(.PAD(instruction_in[5]), .Y(instruction_in_I[5]));
+	ICP PAD_instruction_in_i_6(.PAD(instruction_in[6]), .Y(instruction_in_I[6]));
+	ICP PAD_instruction_in_i_7(.PAD(instruction_in[7]), .Y(instruction_in_I[7]));
+	ICP PAD_instruction_in_i_8(.PAD(instruction_in[8]), .Y(instruction_in_I[8]));
+	ICP PAD_instruction_in_i_9(.PAD(instruction_in[9]), .Y(instruction_in_I[9]));
+	ICP PAD_instruction_in_i_10(.PAD(instruction_in[10]), .Y(instruction_in_I[10]));
+	ICP PAD_instruction_in_i_11(.PAD(instruction_in[11]), .Y(instruction_in_I[11]));
+	ICP PAD_instruction_in_i_12(.PAD(instruction_in[12]), .Y(instruction_in_I[12]));
+	ICP PAD_instruction_in_i_13(.PAD(instruction_in[13]), .Y(instruction_in_I[13]));
+	ICP PAD_instruction_in_i_14(.PAD(instruction_in[14]), .Y(instruction_in_I[14]));
+	ICP PAD_instruction_in_i_15(.PAD(instruction_in[15]), .Y(instruction_in_I[15]));
+	ICP PAD_instruction_in_i_16(.PAD(instruction_in[16]), .Y(instruction_in_I[16]));
+	ICP PAD_instruction_in_i_17(.PAD(instruction_in[17]), .Y(instruction_in_I[17]));
+	ICP PAD_instruction_in_i_18(.PAD(instruction_in[18]), .Y(instruction_in_I[18]));
+	ICP PAD_instruction_in_i_19(.PAD(instruction_in[19]), .Y(instruction_in_I[19]));
+	ICP PAD_instruction_in_i_20(.PAD(instruction_in[20]), .Y(instruction_in_I[20]));
+	ICP PAD_instruction_in_i_21(.PAD(instruction_in[21]), .Y(instruction_in_I[21]));
+	ICP PAD_instruction_in_i_22(.PAD(instruction_in[22]), .Y(instruction_in_I[22]));
+	ICP PAD_instruction_in_i_23(.PAD(instruction_in[23]), .Y(instruction_in_I[23]));
+	ICP PAD_instruction_in_i_24(.PAD(instruction_in[24]), .Y(instruction_in_I[24]));
+	ICP PAD_instruction_in_i_25(.PAD(instruction_in[25]), .Y(instruction_in_I[25]));
+	ICP PAD_instruction_in_i_26(.PAD(instruction_in[26]), .Y(instruction_in_I[26]));
+	ICP PAD_instruction_in_i_27(.PAD(instruction_in[27]), .Y(instruction_in_I[27]));
+	ICP PAD_instruction_in_i_28(.PAD(instruction_in[28]), .Y(instruction_in_I[28]));
+	ICP PAD_instruction_in_i_29(.PAD(instruction_in[29]), .Y(instruction_in_I[29]));
+	ICP PAD_instruction_in_i_30(.PAD(instruction_in[30]), .Y(instruction_in_I[30]));
+	ICP PAD_instruction_in_i_31(.PAD(instruction_in[31]), .Y(instruction_in_I[31]));
 
-	ICP PAD_instruction_in_i_0(.PAD(instruction_in[0]), .Y(real_time_I[0]));
-	ICP PAD_instruction_in_i_1(.PAD(instruction_in[1]), .Y(real_time_I[1]));
-	ICP PAD_instruction_in_i_2(.PAD(instruction_in[2]), .Y(real_time_I[2]));
-	ICP PAD_instruction_in_i_3(.PAD(instruction_in[3]), .Y(real_time_I[3]));
-	ICP PAD_instruction_in_i_4(.PAD(instruction_in[4]), .Y(real_time_I[4]));
-	ICP PAD_instruction_in_i_5(.PAD(instruction_in[5]), .Y(real_time_I[5]));
-	ICP PAD_instruction_in_i_6(.PAD(instruction_in[6]), .Y(real_time_I[6]));
-	ICP PAD_instruction_in_i_7(.PAD(instruction_in[7]), .Y(real_time_I[7]));
-	ICP PAD_instruction_in_i_8(.PAD(instruction_in[8]), .Y(real_time_I[8]));
-	ICP PAD_instruction_in_i_9(.PAD(instruction_in[9]), .Y(real_time_I[9]));
-	ICP PAD_instruction_in_i_10(.PAD(instruction_in[10]), .Y(real_time_I[10]));
-	ICP PAD_instruction_in_i_11(.PAD(instruction_in[11]), .Y(real_time_I[11]));
-	ICP PAD_instruction_in_i_12(.PAD(instruction_in[12]), .Y(real_time_I[12]));
-	ICP PAD_instruction_in_i_13(.PAD(instruction_in[13]), .Y(real_time_I[13]));
-	ICP PAD_instruction_in_i_14(.PAD(instruction_in[14]), .Y(real_time_I[14]));
-	ICP PAD_instruction_in_i_15(.PAD(instruction_in[15]), .Y(real_time_I[15]));
-	ICP PAD_instruction_in_i_16(.PAD(instruction_in[16]), .Y(real_time_I[16]));
-	ICP PAD_instruction_in_i_17(.PAD(instruction_in[17]), .Y(real_time_I[17]));
-	ICP PAD_instruction_in_i_18(.PAD(instruction_in[18]), .Y(real_time_I[18]));
-	ICP PAD_instruction_in_i_19(.PAD(instruction_in[19]), .Y(real_time_I[19]));
-	ICP PAD_instruction_in_i_20(.PAD(instruction_in[20]), .Y(real_time_I[20]));
-	ICP PAD_instruction_in_i_21(.PAD(instruction_in[21]), .Y(real_time_I[21]));
-	ICP PAD_instruction_in_i_22(.PAD(instruction_in[22]), .Y(real_time_I[22]));
-	ICP PAD_instruction_in_i_23(.PAD(instruction_in[23]), .Y(real_time_I[23]));
-	ICP PAD_instruction_in_i_24(.PAD(instruction_in[24]), .Y(real_time_I[24]));
-	ICP PAD_instruction_in_i_25(.PAD(instruction_in[25]), .Y(real_time_I[25]));
-	ICP PAD_instruction_in_i_26(.PAD(instruction_in[26]), .Y(real_time_I[26]));
-	ICP PAD_instruction_in_i_27(.PAD(instruction_in[27]), .Y(real_time_I[27]));
-	ICP PAD_instruction_in_i_28(.PAD(instruction_in[28]), .Y(real_time_I[28]));
-	ICP PAD_instruction_in_i_29(.PAD(instruction_in[29]), .Y(real_time_I[29]));
-	ICP PAD_instruction_in_i_30(.PAD(instruction_in[30]), .Y(real_time_I[30]));
-	ICP PAD_instruction_in_i_31(.PAD(instruction_in[31]), .Y(real_time_I[31]));
+	ICP PAD_boot_address_i_0(.PAD(boot_address[0]), .Y(boot_address_I[0]));
+	ICP PAD_boot_address_i_1(.PAD(boot_address[1]), .Y(boot_address_I[1]));
+	ICP PAD_boot_address_i_2(.PAD(boot_address[2]), .Y(boot_address_I[2]));
+	ICP PAD_boot_address_i_3(.PAD(boot_address[3]), .Y(boot_address_I[3]));
+	ICP PAD_boot_address_i_4(.PAD(boot_address[4]), .Y(boot_address_I[4]));
+	ICP PAD_boot_address_i_5(.PAD(boot_address[5]), .Y(boot_address_I[5]));
+	ICP PAD_boot_address_i_6(.PAD(boot_address[6]), .Y(boot_address_I[6]));
+	ICP PAD_boot_address_i_7(.PAD(boot_address[7]), .Y(boot_address_I[7]));
+	ICP PAD_boot_address_i_8(.PAD(boot_address[8]), .Y(boot_address_I[8]));
+	ICP PAD_boot_address_i_9(.PAD(boot_address[9]), .Y(boot_address_I[9]));
+	ICP PAD_boot_address_i_10(.PAD(boot_address[10]), .Y(boot_address_I[10]));
+	ICP PAD_boot_address_i_11(.PAD(boot_address[11]), .Y(boot_address_I[11]));
+	ICP PAD_boot_address_i_12(.PAD(boot_address[12]), .Y(boot_address_I[12]));
+	ICP PAD_boot_address_i_13(.PAD(boot_address[13]), .Y(boot_address_I[13]));
+	ICP PAD_boot_address_i_14(.PAD(boot_address[14]), .Y(boot_address_I[14]));
+	ICP PAD_boot_address_i_15(.PAD(boot_address[15]), .Y(boot_address_I[15]));
+	ICP PAD_boot_address_i_16(.PAD(boot_address[16]), .Y(boot_address_I[16]));
+	ICP PAD_boot_address_i_17(.PAD(boot_address[17]), .Y(boot_address_I[17]));
+	ICP PAD_boot_address_i_18(.PAD(boot_address[18]), .Y(boot_address_I[18]));
+	ICP PAD_boot_address_i_19(.PAD(boot_address[19]), .Y(boot_address_I[19]));
+	ICP PAD_boot_address_i_20(.PAD(boot_address[20]), .Y(boot_address_I[20]));
+	ICP PAD_boot_address_i_21(.PAD(boot_address[21]), .Y(boot_address_I[21]));
+	ICP PAD_boot_address_i_22(.PAD(boot_address[22]), .Y(boot_address_I[22]));
+	ICP PAD_boot_address_i_23(.PAD(boot_address[23]), .Y(boot_address_I[23]));
+	ICP PAD_boot_address_i_24(.PAD(boot_address[24]), .Y(boot_address_I[24]));
+	ICP PAD_boot_address_i_25(.PAD(boot_address[25]), .Y(boot_address_I[25]));
+	ICP PAD_boot_address_i_26(.PAD(boot_address[26]), .Y(boot_address_I[26]));
+	ICP PAD_boot_address_i_27(.PAD(boot_address[27]), .Y(boot_address_I[27]));
+	ICP PAD_boot_address_i_28(.PAD(boot_address[28]), .Y(boot_address_I[28]));
+	ICP PAD_boot_address_i_29(.PAD(boot_address[29]), .Y(boot_address_I[29]));
+	ICP PAD_boot_address_i_30(.PAD(boot_address[30]), .Y(boot_address_I[30]));
+	ICP PAD_boot_address_i_31(.PAD(boot_address[31]), .Y(boot_address_I[31]));
 
-	ICP PAD_reset_i(.PAD(reset), .Y(reset_I));
-	ICP PAD_clock_i(.PAD(clock), .Y(clock_I));
-	ICP PAD_interrupt_request_software_i(.PAD(interrupt_request_software), .Y(interrupt_request_software_I));
-	ICP PAD_interrupt_request_timer_i(.PAD(interrupt_request_timer), .Y(interrupt_request_timer_I));
-	ICP PAD_interrupt_request_external_i(.PAD(interrupt_request_external), .Y(interrupt_request_external_I));
+	ICP PAD_data_in_i_0(.PAD(data_in[0]), .Y(data_in_I[0]));
+	ICP PAD_data_in_i_1(.PAD(data_in[1]), .Y(data_in_I[1]));
+	ICP PAD_data_in_i_2(.PAD(data_in[2]), .Y(data_in_I[2]));
+	ICP PAD_data_in_i_3(.PAD(data_in[3]), .Y(data_in_I[3]));
+	ICP PAD_data_in_i_4(.PAD(data_in[4]), .Y(data_in_I[4]));
+	ICP PAD_data_in_i_5(.PAD(data_in[5]), .Y(data_in_I[5]));
+	ICP PAD_data_in_i_6(.PAD(data_in[6]), .Y(data_in_I[6]));
+	ICP PAD_data_in_i_7(.PAD(data_in[7]), .Y(data_in_I[7]));
+	ICP PAD_data_in_i_8(.PAD(data_in[8]), .Y(data_in_I[8]));
+	ICP PAD_data_in_i_9(.PAD(data_in[9]), .Y(data_in_I[9]));
+	ICP PAD_data_in_i_10(.PAD(data_in[10]), .Y(data_in_I[10]));
+	ICP PAD_data_in_i_11(.PAD(data_in[11]), .Y(data_in_I[11]));
+	ICP PAD_data_in_i_12(.PAD(data_in[12]), .Y(data_in_I[12]));
+	ICP PAD_data_in_i_13(.PAD(data_in[13]), .Y(data_in_I[13]));
+	ICP PAD_data_in_i_14(.PAD(data_in[14]), .Y(data_in_I[14]));
+	ICP PAD_data_in_i_15(.PAD(data_in[15]), .Y(data_in_I[15]));
+	ICP PAD_data_in_i_16(.PAD(data_in[16]), .Y(data_in_I[16]));
+	ICP PAD_data_in_i_17(.PAD(data_in[17]), .Y(data_in_I[17]));
+	ICP PAD_data_in_i_18(.PAD(data_in[18]), .Y(data_in_I[18]));
+	ICP PAD_data_in_i_19(.PAD(data_in[19]), .Y(data_in_I[19]));
+	ICP PAD_data_in_i_20(.PAD(data_in[20]), .Y(data_in_I[20]));
+	ICP PAD_data_in_i_21(.PAD(data_in[21]), .Y(data_in_I[21]));
+	ICP PAD_data_in_i_22(.PAD(data_in[22]), .Y(data_in_I[22]));
+	ICP PAD_data_in_i_23(.PAD(data_in[23]), .Y(data_in_I[23]));
+	ICP PAD_data_in_i_24(.PAD(data_in[24]), .Y(data_in_I[24]));
+	ICP PAD_data_in_i_25(.PAD(data_in[25]), .Y(data_in_I[25]));
+	ICP PAD_data_in_i_26(.PAD(data_in[26]), .Y(data_in_I[26]));
+	ICP PAD_data_in_i_27(.PAD(data_in[27]), .Y(data_in_I[27]));
+	ICP PAD_data_in_i_28(.PAD(data_in[28]), .Y(data_in_I[28]));
+	ICP PAD_data_in_i_29(.PAD(data_in[29]), .Y(data_in_I[29]));
+	ICP PAD_data_in_i_30(.PAD(data_in[30]), .Y(data_in_I[30]));
+	ICP PAD_data_in_i_31(.PAD(data_in[31]), .Y(data_in_I[31]));
+
+	BD8P PAD_data_write_request_o(.A(data_write_request_O), .PAD(data_write_request));
 
 	BD8P PAD_instruction_address_0_o(.A(instruction_address_O[0]), .PAD(instruction_address[0]));
 	BD8P PAD_instruction_address_1_o(.A(instruction_address_O[1]), .PAD(instruction_address[1]));
@@ -25001,50 +25035,59 @@ module iopads(real_time, instruction_in, boot_address, reset, clock, interrupt_r
 	BD8P PAD_data_write_mask_2_o(.A(data_write_mask_O[2]), .PAD(data_write_mask[2]));
 	BD8P PAD_data_write_mask_3_o(.A(data_write_mask_O[3]), .PAD(data_write_mask[3]));
 
+	VDDIPADP PAD_vdd_E();
+	GNDOPADP PAD_vss_E();
+
 	CORNERP PAD_corner_ll();
 	CORNERP PAD_corner_lr();
 	CORNERP PAD_corner_ul();
 	CORNERP PAD_corner_ur();
-
+	
 endmodule
 
 module top(real_time, instruction_in, boot_address, reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, data_out, data_rw_address, data_write_mask);
 
-	input real_time [63:0];
-	input instruction_in [31:0];
-	input boot_address [31:0];
 	input reset;
 	input clock;
 	input interrupt_request_software;
 	input interrupt_request_timer;
 	input interrupt_request_external;
+	input real_time [63:0];
+	input instruction_in [31:0];
+	input boot_address [31:0];
+	input data_in [31:0];
+	output data_write_request;
 	output instruction_address [31:0];
 	output data_out [31:0];
 	output data_rw_address [31:0];
 	output data_write_mask [3:0];
 
-	wire real_time_I [63:0];
-	wire instruction_in_I [31:0];
-	wire boot_address_I [31:0];
 	wire reset_I;
 	wire clock_I;
 	wire interrupt_request_software_I;
 	wire interrupt_request_timer_I;
-	wire interrupt_request_external;
+	wire interrupt_request_external_I;
+	wire real_time_I [63:0];
+	wire instruction_in_I [31:0];
+	wire boot_address_I [31:0];
+	wire data_in_I [31:0];
+	wire data_write_request_O;
 	wire instruction_address_O [31:0];
 	wire data_out_O [31:0];
 	wire data_rw_address_O [31:0];
 	wire data_write_mask_O [3:0];
 
 	riscv_steel_core top_INST(
-		.real_time(real_time_I),
-		.instruction_in(instruction_in_I),
-		.boot_address(boot_address_I),
 		.reset(reset_I),
 		.clock(clock_I),
 		.interrupt_request_software(interrupt_request_software_I),
 		.interrupt_request_timer(interrupt_request_timer_I),
 		.interrupt_request_external(interrupt_request_external_I),
+		.real_time(real_time_I),
+		.instruction_in(instruction_in_I),
+		.boot_address(boot_address_I),
+		.data_in(data_in_I),
+		.data_write_request(data_write_request_O),
 		.instruction_address(instruction_address_O),
 		.data_out(data_out_O),
 		.data_rw_address(data_rw_address_O),
@@ -25052,27 +25095,31 @@ module top(real_time, instruction_in, boot_address, reset, clock, interrupt_requ
 	);
 
 	iopads IOPADS_INST(
-		.real_time(real_time),
-		.instruction_in(instruction_in),
-		.boot_address(boot_address),
 		.reset(reset),
 		.clock(clock),
 		.interrupt_request_software(interrupt_request_software),
 		.interrupt_request_timer(interrupt_request_timer),
 		.interrupt_request_external(interrupt_request_external),
+		.real_time(real_time),
+		.instruction_in(instruction_in),
+		.boot_address(boot_address),
+		.data_in(data_in),
+		.data_write_request(data_write_request),
 		.instruction_address(instruction_address),
 		.data_out(data_out),
 		.data_rw_address(data_rw_address),
 		.data_write_mask(data_write_mask),
 
-		.real_time_I(real_time_I),
-		.instruction_in_I(instruction_in_I),
-		.boot_address_I(boot_address_I),
 		.reset_I(reset_I),
 		.clock_I(clock_I),
 		.interrupt_request_software_I(interrupt_request_software_I),
 		.interrupt_request_timer_I(interrupt_request_timer_I),
 		.interrupt_request_external_I(interrupt_request_external_I),
+		.real_time_I(real_time_I),
+		.instruction_in_I(instruction_in_I),
+		.boot_address_I(boot_address_I),
+		.data_in_I(data_in_I),
+		.data_write_request(data_write_request_O),
 		.instruction_address_O(instruction_address_O),
 		.data_out_O(data_out_O),
 		.data_rw_address_O(data_rw_address_O),
