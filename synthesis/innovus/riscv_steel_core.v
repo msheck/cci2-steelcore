@@ -24726,38 +24726,37 @@ endmodule
 //    IO PADS   //
 //////////////////
 
-
-module iopads(real_time, instruction_in, boot_address, reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, data_out, data_rw_address, data_write_mask, real_time_I, instruction_in_I, boot_address_I, reset_I, clock_I, interrupt_request_software_I, interrupt_request_timer_I, interrupt_request_external_I, instruction_address_O, data_out_O, data_rw_address_O, data_write_mask_O);
+module iopads(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, real_time, instruction_in, boot_address, data_in, data_write_request,  instruction_address, data_out, data_rw_address, data_write_mask, reset_I, clock_I, interrupt_request_software_I, interrupt_request_timer_I, interrupt_request_external_I, real_time_I, instruction_in_I, boot_address_I, data_in_I, data_write_request_O, instruction_address_O, data_out_O, data_rw_address_O, data_write_mask_O);
 
 	input reset;
 	input clock;
 	input interrupt_request_software;
 	input interrupt_request_timer;
 	input interrupt_request_external;
-	input real_time [63:0];
-	input instruction_in [31:0];
-	input boot_address [31:0];
-	input data_in [31:0];
+	input [63:0] real_time;
+	input [31:0] instruction_in;
+	input [31:0] boot_address;
+	input [31:0] data_in;
 	output data_write_request;
-	output instruction_address [31:0];
-	output data_out [31:0];
-	output data_rw_address [31:0];
-	output data_write_mask [3:0];
+	output [31:0] instruction_address;
+	output [31:0] data_out;
+	output [31:0] data_rw_address;
+	output [3:0] data_write_mask;
 
 	output reset_I;
 	output clock_I;
 	output interrupt_request_software_I;
 	output interrupt_request_timer_I;
-	output interrupt_request_external;
-	output real_time_I [63:0];
-	output instruction_in_I [31:0];
-	output boot_address_I [31:0];
-	output data_in_I [31:0];
+	output interrupt_request_external_I;
+	output [63:0] real_time_I;
+	output [31:0] instruction_in_I;
+	output [31:0] boot_address_I;
+	output [31:0] data_in_I;
 	input data_write_request_O;
-	input instruction_address_O [31:0];
-	input data_out_O [31:0];
-	input data_rw_address_O [31:0];
-	input data_write_mask_O [3:0];
+	input [31:0] instruction_address_O;
+	input [31:0] data_out_O;
+	input [31:0] data_rw_address_O;
+	input [3:0] data_write_mask_O;
 
 	ICP PAD_reset_i(.PAD(reset), .Y(reset_I));
 	ICP PAD_clock_i(.PAD(clock), .Y(clock_I));
@@ -25035,47 +25034,46 @@ module iopads(real_time, instruction_in, boot_address, reset, clock, interrupt_r
 	BD8P PAD_data_write_mask_2_o(.A(data_write_mask_O[2]), .PAD(data_write_mask[2]));
 	BD8P PAD_data_write_mask_3_o(.A(data_write_mask_O[3]), .PAD(data_write_mask[3]));
 
-	VDDIPADP PAD_vdd_E();
-	GNDOPADP PAD_vss_E();
+	VDDIPADP PAD_vdd_W();
+	GNDOPADP PAD_vss_W();
 
 	CORNERP PAD_corner_ll();
 	CORNERP PAD_corner_lr();
 	CORNERP PAD_corner_ul();
 	CORNERP PAD_corner_ur();
-	
 endmodule
 
-module top(real_time, instruction_in, boot_address, reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, data_out, data_rw_address, data_write_mask);
+module top(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, real_time, instruction_in, boot_address, data_in, data_write_request, instruction_address, data_out, data_rw_address, data_write_mask);
 
 	input reset;
 	input clock;
 	input interrupt_request_software;
 	input interrupt_request_timer;
 	input interrupt_request_external;
-	input real_time [63:0];
-	input instruction_in [31:0];
-	input boot_address [31:0];
-	input data_in [31:0];
+	input [63:0] real_time;
+	input [31:0] instruction_in;
+	input [31:0] boot_address;
+	input [31:0] data_in;
 	output data_write_request;
-	output instruction_address [31:0];
-	output data_out [31:0];
-	output data_rw_address [31:0];
-	output data_write_mask [3:0];
+	output [31:0] instruction_address;
+	output [31:0] data_out;
+	output [31:0] data_rw_address;
+	output [3:0] data_write_mask;
 
 	wire reset_I;
 	wire clock_I;
 	wire interrupt_request_software_I;
 	wire interrupt_request_timer_I;
 	wire interrupt_request_external_I;
-	wire real_time_I [63:0];
-	wire instruction_in_I [31:0];
-	wire boot_address_I [31:0];
-	wire data_in_I [31:0];
+	wire [63:0] real_time_I;
+	wire [31:0] instruction_in_I;
+	wire [31:0] boot_address_I;
+	wire [31:0] data_in_I;
 	wire data_write_request_O;
-	wire instruction_address_O [31:0];
-	wire data_out_O [31:0];
-	wire data_rw_address_O [31:0];
-	wire data_write_mask_O [3:0];
+	wire [31:0] instruction_address_O;
+	wire [31:0] data_out_O;
+	wire [31:0] data_rw_address_O;
+	wire [3:0] data_write_mask_O;
 
 	riscv_steel_core top_INST(
 		.reset(reset_I),
