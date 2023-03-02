@@ -25119,7 +25119,7 @@ module top(real_time, instruction_in, boot_address, reset, clock, interrupt_requ
 		.instruction_in_I(instruction_in_I),
 		.boot_address_I(boot_address_I),
 		.data_in_I(data_in_I),
-		.data_write_request(data_write_request_O),
+		.data_write_request_O(data_write_request_O),
 		.instruction_address_O(instruction_address_O),
 		.data_out_O(data_out_O),
 		.data_rw_address_O(data_rw_address_O),
