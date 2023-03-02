@@ -24726,7 +24726,7 @@ endmodule
 //    IO PADS   //
 //////////////////
 
-module iopads(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, real_time, instruction_in, boot_address, data_in, data_write_request,  instruction_address, data_out, data_rw_address, data_write_mask, reset_I, clock_I, interrupt_request_software_I, interrupt_request_timer_I, interrupt_request_external_I, real_time_I, instruction_in_I, boot_address_I, data_in_I, data_write_request_O, instruction_address_O, data_out_O, data_rw_address_O, data_write_mask_O);
+module iopads(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, real_time, instruction_in, boot_address, data_in, data_write_request,  instruction_address, data_out, data_rw_address, data_write_mask, reset_I, clock_I, interrupt_request_software_I, interrupt_request_timer_I, interrupt_request_external_I, real_time_I, instruction_in_I, boot_address_I, data_in_I, data_write_request_O, instruction_address_O, data_out_O, data_rw_address_O, data_write_mask_O);
 
 	input reset;
 	input clock;
@@ -25043,7 +25043,7 @@ module iopads(reset, clock, interrupt_request_software, interrupt_request_timer,
 	CORNERP PAD_corner_ur();
 endmodule
 
-module top(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, instruction_address, real_time, instruction_in, boot_address, data_in, data_write_request, instruction_address, data_out, data_rw_address, data_write_mask);
+module top(reset, clock, interrupt_request_software, interrupt_request_timer, interrupt_request_external, real_time, instruction_in, boot_address, data_in, data_write_request, instruction_address, data_out, data_rw_address, data_write_mask);
 
 	input reset;
 	input clock;
@@ -25121,6 +25121,6 @@ module top(reset, clock, interrupt_request_software, interrupt_request_timer, in
 		.instruction_address_O(instruction_address_O),
 		.data_out_O(data_out_O),
 		.data_rw_address_O(data_rw_address_O),
-		.data_write_mask_O(data_write_mask_O),
+		.data_write_mask_O(data_write_mask_O)
 	);
 endmodule
