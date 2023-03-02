@@ -1,3 +1,8 @@
+Pad: IOPADS PAD_reset_i N ICP
+Pad: IOPADS PAD_clock_i N ICP
+Pad: IOPADS PAD_interrupt_request_software_i S ICP
+Pad: IOPADS PAD_interrupt_request_timer_i S ICP
+Pad: IOPADS PAD_interrupt_request_external_i S ICP
 
 Pad: IOPADS PAD_real_time_i_0 N ICP
 Pad: IOPADS PAD_real_time_i_1 N ICP
@@ -130,12 +135,73 @@ Pad: IOPADS PAD_boot_address_i_29 W ICP
 Pad: IOPADS PAD_boot_address_i_30 W ICP
 Pad: IOPADS PAD_boot_address_i_31 W ICP
 
-Pad: IOPADS PAD_reset_i N ICP
-Pad: IOPADS PAD_clock_i N ICP
+Pad: IOPADS PAD_instruction_address_0_o S ICP
+Pad: IOPADS PAD_instruction_address_1_o S ICP
+Pad: IOPADS PAD_instruction_address_2_o S ICP
+Pad: IOPADS PAD_instruction_address_3_o S ICP
+Pad: IOPADS PAD_instruction_address_4_o S ICP
+Pad: IOPADS PAD_instruction_address_5_o S ICP
+Pad: IOPADS PAD_instruction_address_6_o S ICP
+Pad: IOPADS PAD_instruction_address_7_o S ICP
+Pad: IOPADS PAD_instruction_address_8_o S ICP
+Pad: IOPADS PAD_instruction_address_9_o S ICP
+Pad: IOPADS PAD_instruction_address_10_o S ICP
+Pad: IOPADS PAD_instruction_address_11_o S ICP
+Pad: IOPADS PAD_instruction_address_12_o S ICP
+Pad: IOPADS PAD_instruction_address_13_o S ICP
+Pad: IOPADS PAD_instruction_address_14_o S ICP
+Pad: IOPADS PAD_instruction_address_15_o S ICP
+Pad: IOPADS PAD_instruction_address_16_o S ICP
+Pad: IOPADS PAD_instruction_address_17_o S ICP
+Pad: IOPADS PAD_instruction_address_18_o S ICP
+Pad: IOPADS PAD_instruction_address_19_o S ICP
+Pad: IOPADS PAD_instruction_address_20_o S ICP
+Pad: IOPADS PAD_instruction_address_21_o S ICP
+Pad: IOPADS PAD_instruction_address_22_o S ICP
+Pad: IOPADS PAD_instruction_address_23_o S ICP
+Pad: IOPADS PAD_instruction_address_24_o S ICP
+Pad: IOPADS PAD_instruction_address_25_o S ICP
+Pad: IOPADS PAD_instruction_address_26_o S ICP
+Pad: IOPADS PAD_instruction_address_27_o S ICP
+Pad: IOPADS PAD_instruction_address_28_o S ICP
+Pad: IOPADS PAD_instruction_address_29_o S ICP
+Pad: IOPADS PAD_instruction_address_30_o S ICP
+Pad: IOPADS PAD_instruction_address_31_o S ICP
 
-Pad: IOPADS PAD_interrupt_request_software_i S ICP
-Pad: IOPADS PAD_interrupt_request_timer_i S ICP
-Pad: IOPADS PAD_interrupt_request_external_i S ICP
+Pad: IOPADS PAD_data_in_0_o S ICP
+Pad: IOPADS PAD_data_in_1_o S ICP
+Pad: IOPADS PAD_data_in_2_o S ICP
+Pad: IOPADS PAD_data_in_3_o S ICP
+Pad: IOPADS PAD_data_in_4_o S ICP
+Pad: IOPADS PAD_data_in_5_o S ICP
+Pad: IOPADS PAD_data_in_6_o S ICP
+Pad: IOPADS PAD_data_in_7_o S ICP
+Pad: IOPADS PAD_data_in_8_o S ICP
+Pad: IOPADS PAD_data_in_9_o S ICP
+Pad: IOPADS PAD_data_in_10_o S ICP
+Pad: IOPADS PAD_data_in_11_o S ICP
+Pad: IOPADS PAD_data_in_12_o S ICP
+Pad: IOPADS PAD_data_in_13_o S ICP
+Pad: IOPADS PAD_data_in_14_o S ICP
+Pad: IOPADS PAD_data_in_15_o S ICP
+Pad: IOPADS PAD_data_in_16_o S ICP
+Pad: IOPADS PAD_data_in_17_o S ICP
+Pad: IOPADS PAD_data_in_18_o S ICP
+Pad: IOPADS PAD_data_in_19_o S ICP
+Pad: IOPADS PAD_data_in_20_o S ICP
+Pad: IOPADS PAD_data_in_21_o S ICP
+Pad: IOPADS PAD_data_in_22_o S ICP
+Pad: IOPADS PAD_data_in_23_o S ICP
+Pad: IOPADS PAD_data_in_24_o S ICP
+Pad: IOPADS PAD_data_in_25_o S ICP
+Pad: IOPADS PAD_data_in_26_o S ICP
+Pad: IOPADS PAD_data_in_27_o S ICP
+Pad: IOPADS PAD_data_in_28_o S ICP
+Pad: IOPADS PAD_data_in_29_o S ICP
+Pad: IOPADS PAD_data_in_30_o S ICP
+Pad: IOPADS PAD_data_in_31_o S ICP
+
+Pad: IOPADS PAD_data_write_request_o E BD8P
 
 Pad: IOPADS PAD_instruction_address_0_o S BD8P
 Pad: IOPADS PAD_instruction_address_1_o S BD8P
@@ -240,6 +306,3 @@ Pad: IOPADS PAD_data_write_mask_0_o E BD8P
 Pad: IOPADS PAD_data_write_mask_1_o E BD8P
 Pad: IOPADS PAD_data_write_mask_2_o E BD8P
 Pad: IOPADS PAD_data_write_mask_3_o E BD8P
-
-
-
