@@ -25034,8 +25034,8 @@ module iopads(reset, clock, interrupt_request_software, interrupt_request_timer,
 	BD8P PAD_data_write_mask_2_o(.A(data_write_mask_O[2]), .PAD(data_write_mask[2]));
 	BD8P PAD_data_write_mask_3_o(.A(data_write_mask_O[3]), .PAD(data_write_mask[3]));
 
-	VDDIPADP PAD_vdd_W();
-	GNDOPADP PAD_vss_W();
+	VDDIPADP PAD_vdd();
+        GNDOPADP PAD_vss();
 
 	CORNERP PAD_corner_ll();
 	CORNERP PAD_corner_lr();
