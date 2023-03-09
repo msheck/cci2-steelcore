@@ -16,4 +16,4 @@ report_summary -out_dir summaryReport
 time_design -post_route
 
 # Check Geometry
-eval_legacy {verifyGeometry -noOverlap}
+eval_legacy {verifyGeometry -noOverlap} 
