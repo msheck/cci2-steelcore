@@ -18,13 +18,19 @@
 *.rs.fp*
 *.ctstch
 *.rpt
+*via_layer*
+*.geom*
+*.sdf
+*.cap
+*.mmmc.tcl
+*synthesis-final*
 *.enc*
 *.gif
 
 */reports_*
 */outputs_*
-*/innovus*
 */timingReports*
+*/summaryReport*
 
 synthesis/fv
 INCA_libs
