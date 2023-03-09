@@ -7,13 +7,10 @@
 ##  -Add filler cells to the design                         ##
 ##  -Generate a summary report of the final design          ##
 ##############################################################
-#Add filler cells
-add_fillers -base_cells FEED1 FEED2 FEED3 FEED5 FEED7 FEED10 FEED15 FEED25  -prefix FILLER
+##Export design netlist
+extract_rc
+write_netlist riscv_steel_core.v
+##Annotate design delay
+write_sdf riscv_steel_core.sdf
+write_parasitics -set_load_file riscv_steel_core.cap
 
-##Generate reports
-
-report_summary -out_dir summaryReport
-time_design -post_route
-
-# Check Geometry
-eval_legacy {verifyGeometry -noOverlap} 
