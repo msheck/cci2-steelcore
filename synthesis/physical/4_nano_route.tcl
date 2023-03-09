@@ -16,3 +16,4 @@ eval_legacy {setAnalysisMode -analysisType onChipVariation}
 opt_design -post_route
 
 report_timing
+ 
