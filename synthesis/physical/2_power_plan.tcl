@@ -29,4 +29,3 @@ add_well_taps -cell FEED1 -cell_interval 40 -fixed_gap -prefix WELLTAP -in_row_o
 
 ##Add power stripes
 add_stripes -block_ring_top_layer_limit M3 -max_same_layer_jog_length 6 -pad_core_ring_bottom_layer_limit M3 -set_to_set_distance 25 -pad_core_ring_top_layer_limit M3 -spacing 6 -merge_stripes_value 2.5 -layer M4 -block_ring_bottom_layer_limit M3 -width 0.5 -nets {vdd gnd}
-
